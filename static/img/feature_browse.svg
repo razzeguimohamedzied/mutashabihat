@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320" role="img" aria-label="تصفح ومقارنة الآيات المتشابهة">
+  <title>تصفح سهل</title>
+  <circle cx="160" cy="160" r="150" fill="#eaf1ec"/>
+  <!-- two mirrored verse cards -->
+  <g>
+    <!-- left card -->
+    <rect x="46" y="74" width="98" height="150" rx="10" fill="#fbf7ec" stroke="#205d3b" stroke-width="3"/>
+    <!-- right card -->
+    <rect x="176" y="74" width="98" height="150" rx="10" fill="#fbf7ec" stroke="#205d3b" stroke-width="3"/>
+    <!-- connector: these two are "matching" verses -->
+    <line x1="144" y1="149" x2="176" y2="149" stroke="#d4a537" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="144" cy="149" r="5" fill="#d4a537"/>
+    <circle cx="176" cy="149" r="5" fill="#d4a537"/>
+    <!-- verse lines (mirrored) -->
+    <g stroke-linecap="round">
+      <g stroke="#2e8555" stroke-width="5">
+        <path d="M62 98 H128"/>
+        <path d="M62 118 H112"/>
+        <path d="M62 178 H128"/>
+        <path d="M62 198 H108"/>
+        <path d="M192 98 H258"/>
+        <path d="M208 118 H258"/>
+        <path d="M192 178 H258"/>
+        <path d="M212 198 H258"/>
+      </g>
+      <!-- highlighted matching line (gold = the mutashabih phrase) -->
+      <g stroke="#d4a537" stroke-width="6">
+        <path d="M62 146 H120"/>
+        <path d="M200 146 H258"/>
+      </g>
+    </g>
+  </g>
+  <!-- magnifying glass -->
+  <g transform="translate(196 196)">
+    <circle cx="0" cy="0" r="34" fill="#ffffff" fill-opacity="0.7" stroke="#205d3b" stroke-width="7"/>
+    <line x1="24" y1="24" x2="52" y2="52" stroke="#205d3b" stroke-width="10" stroke-linecap="round"/>
+  </g>
+</svg>

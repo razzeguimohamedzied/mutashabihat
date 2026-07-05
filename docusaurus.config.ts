@@ -7,7 +7,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 const config: Config = {
   title: "متشابهات",
   tagline: "مرجع المتشابهات اللفظية في القرآن الكريم",
-  favicon: "img/favicon.ico",
+  favicon: "img/favicon.svg",
 
   future: {
     v4: true,

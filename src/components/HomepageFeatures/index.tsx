@@ -12,7 +12,7 @@ type FeatureItem = {
 const FeatureList: FeatureItem[] = [
   {
     title: 'تصفح سهل',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    Svg: require('@site/static/img/feature_browse.svg').default,
     description: (
       <>
         تصفح متشابهات القرآن الكريم بسهولة ويسر، مع تنظيم واضح يساعدك على
@@ -22,7 +22,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'دليل شامل',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    Svg: require('@site/static/img/feature_guide.svg').default,
     description: (
       <>
         مرجع متكامل يجمع الآيات القرآنية المتشابهة لفظاً ومعنىً.
@@ -31,7 +31,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'مصدر موثوق',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    Svg: require('@site/static/img/feature_trusted.svg').default,
     description: (
       <>
         محتوى مدروس ومراجَع يعينك على حفظ القرآن الكريم وتمييز الآيات

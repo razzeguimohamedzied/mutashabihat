@@ -1,0 +1,17 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="متشابهات">
+  <rect width="64" height="64" rx="14" fill="#2e8555"/>
+  <!-- eight-pointed star -->
+  <g transform="translate(32 17)">
+    <rect x="-6.5" y="-6.5" width="13" height="13" rx="1.5" fill="#d4a537"/>
+    <rect x="-6.5" y="-6.5" width="13" height="13" rx="1.5" fill="#d4a537" transform="rotate(45)"/>
+  </g>
+  <!-- open book with mirrored pages -->
+  <path d="M32 30 C24 25 15 25 9 27 L9 50 C15 48 24 48 32 52 Z" fill="#fbf7ec"/>
+  <path d="M32 30 C40 25 49 25 55 27 L55 50 C49 48 40 48 32 52 Z" fill="#efe6cf"/>
+  <path d="M32 30 L32 52" stroke="#205d3b" stroke-width="2.5" stroke-linecap="round"/>
+  <g stroke="#2e8555" stroke-width="2" stroke-linecap="round">
+    <path d="M15 34 H28"/><path d="M36 34 H49"/>
+    <path d="M15 40 H26"/><path d="M38 40 H49"/>
+    <path d="M15 46 H27"/><path d="M37 46 H49"/>
+  </g>
+</svg>

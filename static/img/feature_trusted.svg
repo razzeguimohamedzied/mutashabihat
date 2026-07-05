@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320" role="img" aria-label="مصدر موثوق ومراجَع">
+  <title>مصدر موثوق</title>
+  <circle cx="160" cy="160" r="150" fill="#eaf1ec"/>
+  <!-- closed book -->
+  <g>
+    <rect x="78" y="86" width="140" height="164" rx="12" fill="#2e8555"/>
+    <rect x="78" y="86" width="26" height="164" rx="12" fill="#205d3b"/>
+    <rect x="118" y="108" width="76" height="120" rx="6" fill="#fbf7ec"/>
+    <!-- title lines on cover page -->
+    <g stroke="#2e8555" stroke-width="4" stroke-linecap="round">
+      <path d="M132 130 H180"/>
+      <path d="M138 146 H174"/>
+    </g>
+  </g>
+  <!-- verification seal / rosette -->
+  <g transform="translate(206 214)">
+    <!-- scalloped rosette -->
+    <g fill="#d4a537">
+      <circle r="38"/>
+      <g>
+        <circle cx="38" cy="0" r="9"/>
+        <circle cx="26.9" cy="26.9" r="9"/>
+        <circle cx="0" cy="38" r="9"/>
+        <circle cx="-26.9" cy="26.9" r="9"/>
+        <circle cx="-38" cy="0" r="9"/>
+        <circle cx="-26.9" cy="-26.9" r="9"/>
+        <circle cx="0" cy="-38" r="9"/>
+        <circle cx="26.9" cy="-26.9" r="9"/>
+      </g>
+    </g>
+    <circle r="30" fill="#f0c25a"/>
+    <circle r="30" fill="none" stroke="#b8892a" stroke-width="2"/>
+    <!-- checkmark -->
+    <path d="M-15 1 L-4 13 L17 -12" fill="none" stroke="#205d3b" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- ribbons -->
+    <path d="M-16 34 L-26 62 L-13 54 L-4 40 Z" fill="#205d3b"/>
+    <path d="M16 34 L26 62 L13 54 L4 40 Z" fill="#205d3b"/>
+  </g>
+</svg>

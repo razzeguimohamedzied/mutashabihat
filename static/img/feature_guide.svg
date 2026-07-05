@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320" role="img" aria-label="مصحف مفتوح على رحل">
+  <title>دليل شامل</title>
+  <circle cx="160" cy="160" r="150" fill="#eaf1ec"/>
+  <!-- eight-pointed star -->
+  <g transform="translate(160 66)">
+    <rect x="-15" y="-15" width="30" height="30" rx="4" fill="#d4a537"/>
+    <rect x="-15" y="-15" width="30" height="30" rx="4" fill="#d4a537" transform="rotate(45)"/>
+    <circle r="7" fill="#eaf1ec"/>
+  </g>
+  <!-- rihal (X-shaped book stand) -->
+  <g stroke="#8a5a2b" stroke-width="12" stroke-linecap="round">
+    <line x1="112" y1="196" x2="196" y2="262"/>
+    <line x1="208" y1="196" x2="124" y2="262"/>
+  </g>
+  <line x1="120" y1="256" x2="200" y2="256" stroke="#6f4622" stroke-width="10" stroke-linecap="round"/>
+  <!-- open mushaf -->
+  <!-- left page -->
+  <path d="M160 128 C132 114 96 114 66 122 L66 200 C96 192 132 192 160 206 Z" fill="#fbf7ec" stroke="#205d3b" stroke-width="4" stroke-linejoin="round"/>
+  <!-- right page -->
+  <path d="M160 128 C188 114 224 114 254 122 L254 200 C224 192 188 192 160 206 Z" fill="#efe6cf" stroke="#205d3b" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M160 128 L160 206" stroke="#205d3b" stroke-width="4" stroke-linecap="round"/>
+  <!-- verse lines -->
+  <g stroke="#2e8555" stroke-width="4" stroke-linecap="round">
+    <path d="M84 142 H144"/><path d="M176 142 H236"/>
+    <path d="M84 158 H136"/><path d="M184 158 H236"/>
+    <path d="M84 174 H144"/><path d="M176 174 H236"/>
+  </g>
+</svg>
