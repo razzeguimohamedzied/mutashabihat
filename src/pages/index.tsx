@@ -21,7 +21,7 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="/docs/intro">
-            Get Started
+            ابدأ الآن
           </Link>
         </div>
       </div>
@@ -33,8 +33,8 @@ export default function Home(): ReactNode {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      title={siteConfig.title}
+      description="مرجع متشابهات القرآن الكريم — تصفح وتعلم الآيات القرآنية المتشابهة لفظاً ومعنىً">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

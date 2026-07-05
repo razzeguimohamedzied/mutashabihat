@@ -11,32 +11,31 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
+    title: 'تصفح سهل',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        تصفح متشابهات القرآن الكريم بسهولة ويسر، مع تنظيم واضح يساعدك على
+        الوصول السريع إلى الآيات المتشابهة.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'دليل شامل',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        مرجع متكامل يجمع الآيات القرآنية المتشابهة لفظاً ومعنىً.
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'مصدر موثوق',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        محتوى مدروس ومراجَع يعينك على حفظ القرآن الكريم وتمييز الآيات
+        المتشابهة بدقة واطمئنان.
       </>
     ),
   },
