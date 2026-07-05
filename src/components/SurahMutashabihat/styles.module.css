@@ -83,6 +83,17 @@
   color: var(--ifm-color-emphasis-800);
 }
 
+/* A member from another surah: its name links to that surah's page. */
+.surahLink {
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+}
+
+.surahLink:hover {
+  color: var(--ifm-color-primary-dark);
+  text-decoration: underline;
+}
+
 .ayahNo {
   color: var(--ifm-color-emphasis-600);
 }

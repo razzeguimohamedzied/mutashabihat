@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import clsx from "clsx";
+import Link from "@docusaurus/Link";
 import {
   getGroupsForSurah,
   getSurahInfo,
@@ -40,7 +41,16 @@ function MemberCard({
       aria-current={isCurrent ? "true" : undefined}
     >
       <div className={styles.memberRef}>
-        <span className={styles.surahName}>{member.surahName}</span>
+        {isCurrent ? (
+          <span className={styles.surahName}>{member.surahName}</span>
+        ) : (
+          <Link
+            className={clsx(styles.surahName, styles.surahLink)}
+            to={`/mutashabihat/${getSurahInfo(member.surah)?.slug ?? ""}`}
+          >
+            {member.surahName}
+          </Link>
+        )}
         <span className={styles.ayahNo}>الآية {member.ayah}</span>
         {isCurrent && <span className={styles.currentBadge}>هذه السورة</span>}
       </div>
