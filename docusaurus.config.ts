@@ -11,6 +11,10 @@ const config: Config = {
 
   future: {
     v4: true,
+    // Opt out of the Rspack-based "faster" bundler. Its persistent module-graph
+    // cache panics intermittently in this OneDrive-synced working folder
+    // ("ModuleGraphModule ... not found"). Webpack is slower but reliable here.
+    faster: false,
   },
 
   url: "https://razzeguimohamedzied.github.io",
@@ -33,15 +37,15 @@ const config: Config = {
     locales: ["ar"],
   },
 
+  // Generates one static page per surah at /mutashabihat/{slug} from the
+  // normalized data in src/data/mutashabihat (single source of truth).
+  plugins: ["./src/plugins/mutashabihat-pages.ts"],
+
   presets: [
     [
       "classic",
       {
-        docs: {
-          sidebarPath: "./sidebars.ts",
-          editUrl:
-            "https://github.com/razzeguimohamedzied/mutashabihat/tree/main/",
-        },
+        docs: false,
         blog: false,
         theme: {
           customCss: "./src/css/custom.css",
@@ -62,10 +66,9 @@ const config: Config = {
       },
       items: [
         {
-          type: "docSidebar",
-          sidebarId: "tutorialSidebar",
+          to: "/mutashabihat/mutashabihat-summary",
+          label: "فهرس المتشابهات",
           position: "left",
-          label: "ابدأ الآن",
         },
         {
           href: "https://github.com/razzeguimohamedzied/mutashabihat",

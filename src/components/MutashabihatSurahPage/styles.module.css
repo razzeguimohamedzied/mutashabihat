@@ -1,0 +1,7 @@
+.breadcrumb {
+  max-width: 900px;
+  margin: 0 auto 0.5rem;
+  text-align: right;
+  font-size: 0.9rem;
+  color: var(--ifm-color-emphasis-600);
+}

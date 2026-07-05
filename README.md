@@ -1,41 +1,41 @@
-# Website
+# Mutashabihat feature (المتشابهات)
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+A reference for look-alike Qur'anic verses. There is one page per surah at
+`/mutashabihat/{surahSlug}` plus an index of all 114 surahs at `/mutashabihat-summary`.
 
-## Installation
+## Architecture: normalize the data, denormalize the view
 
-```bash
-yarn
+Each similarity **group** is stored exactly once — the single source of truth —
+and every per-surah view is derived from it at build time. A group is never
+duplicated across surah files, so a group that touches surahs 2, 17 and 20 shows
+up complete on all three pages automatically.
+
+## How to add or edit a group (edit ONE place)
+
+Open **`src/data/mutashabihat/groups.ts`** and add an entry to the `groups`
+array. Nothing else needs to change:
+
+```ts
+{
+  id: "grp-0005",                     // unique, stable
+  title: "وصف مختصر للتشابه",
+  members: [
+    {
+      surah: 2,                       // 1..114
+      surahName: "البقرة",
+      ayah: 62,
+      text: "…full ayah text (Uthmani)…",
+      farq: "…the distinguishing phrase…",  // MUST be an exact substring of text
+    },
+    { /* second member — from any surah */ },
+    // 2+ members; add as many as the group has
+  ],
+}
 ```
 
-## Local Development
+Rules (enforced at load time by `assertGroups` — a bad edit fails the build):
 
-```bash
-yarn start
-```
-
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-## Build
-
-```bash
-yarn build
-```
-
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-## Deployment
-
-Using SSH:
-
-```bash
-USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```bash
-GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+- every group needs **≥ 2 members**;
+- each member's **`farq` must be an exact substring of its `text`** (it is
+  highlighted at render time, never baked into the text);
+- `id`s must be unique and `surah` in `1..114`.
