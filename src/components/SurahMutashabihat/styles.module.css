@@ -118,8 +118,8 @@
   color: var(--ifm-font-color-base);
 }
 
-/* The distinguishing span. Marked at render time, never baked into the text. */
-.farq {
+/* The shared span. Marked at render time, never baked into the text. */
+.similarity {
   background: rgba(255, 214, 0, 0.55);
   color: inherit;
   padding: 0.05em 0.15em;
@@ -127,6 +127,6 @@
   font-weight: 700;
 }
 
-[data-theme="dark"] .farq {
+[data-theme="dark"] .similarity {
   background: rgba(255, 214, 0, 0.32);
 }

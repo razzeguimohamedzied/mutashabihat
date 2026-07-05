@@ -16,15 +16,15 @@ export interface MutashabihMember {
   /** Ayah number within the surah. */
   ayah: number;
   /**
-   * Full ayah text (Uthmani script). This is never mutated; the distinguishing
-   * span (`farq`) is highlighted at render time by locating it inside `text`.
+   * Full ayah text (Uthmani script). This is never mutated; the shared
+   * span (`similarity`) is highlighted at render time by locating it inside `text`.
    */
   text: string;
   /**
-   * The distinguishing word/phrase in THIS member — the part that sets it apart
-   * from the look-alike members. Must be an exact substring of `text`.
+   * The shared word/phrase in THIS member — the part it has in common with the
+   * look-alike members. Must be an exact substring of `text`.
    */
-  farq: string;
+  similarity: string;
 }
 
 /**

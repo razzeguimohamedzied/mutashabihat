@@ -25,7 +25,7 @@ array. Nothing else needs to change:
       surahName: "البقرة",
       ayah: 62,
       text: "…full ayah text (Uthmani)…",
-      farq: "…the distinguishing phrase…",  // MUST be an exact substring of text
+      similarity: "…the shared phrase…",  // MUST be an exact substring of text
     },
     { /* second member — from any surah */ },
     // 2+ members; add as many as the group has
@@ -36,6 +36,6 @@ array. Nothing else needs to change:
 Rules (enforced at load time by `assertGroups` — a bad edit fails the build):
 
 - every group needs **≥ 2 members**;
-- each member's **`farq` must be an exact substring of its `text`** (it is
+- each member's **`similarity` must be an exact substring of its `text`** (it is
   highlighted at render time, never baked into the text);
 - `id`s must be unique and `surah` in `1..114`.

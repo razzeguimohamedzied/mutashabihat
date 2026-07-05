@@ -10,11 +10,11 @@ $ARGUMENTS
 
 ## Expected input (be lenient in parsing; ask if a required field is missing)
 A group has 2+ members. Per member: surah number, ayah number, the EXACT ayah
-text, and the distinguishing word/phrase (farq).
+text, and the shared word/phrase (similarity).
 
 Example the user might paste:
-- 2:25  | البقرة | «<exact text>» | farq: <word>
-- 47:15 | محمد   | «<exact text>» | farq: <word>
+- 2:25  | البقرة | «<exact text>» | similarity: <word>
+- 47:15 | محمد   | «<exact text>» | similarity: <word>
 
 ## CRITICAL RULE — Qur'an text fidelity (non-negotiable)
 NEVER generate, recall, autocomplete, paraphrase, or "correct" ayah text from

@@ -51,7 +51,7 @@ src/pages/index.tsx                   # home page
 - `SurahMutashabihat` selects every group with ≥1 member in the current surah and
   renders the **full** group (all members, cross-surah), so symmetry is
   automatic: a group visible on surah 2's page is also complete on surah 17's.
-- The differing phrase (`farq`) is highlighted by wrapping the matched substring
+- The shared phrase (`similarity`) is highlighted by wrapping the matched substring
   in `<mark>` **at render time** — never bake highlight markup into `text`.
 - The current surah's member(s) are visually emphasized (badge + accent).
 
@@ -61,10 +61,10 @@ Edit only `src/data/mutashabihat/groups.ts`. Invariants enforced by
 `assertGroups` (a violation throws at build time):
 
 - every group has **≥ 2 members**;
-- each member's **`farq` must be an exact substring of its `text`**;
+- each member's **`similarity` must be an exact substring of its `text`**;
 - `id`s are unique and `surah` ∈ `1..114`.
 
-Ayah `text` is Uthmani script. Do not invent verses or references — copy `farq`
+Ayah `text` is Uthmani script. Do not invent verses or references — copy `similarity`
 verbatim from `text` so the highlight matches exactly.
 
 ## Project-specific gotchas

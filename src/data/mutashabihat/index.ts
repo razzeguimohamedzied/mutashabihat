@@ -41,10 +41,10 @@ function assertGroups(all: MutashabihGroup[]): void {
           `[mutashabihat] group ${group.id}: unknown surah ${m.surah}`,
         );
       }
-      if (m.farq.length > 0 && !m.text.includes(m.farq)) {
+      if (m.similarity.length > 0 && !m.text.includes(m.similarity)) {
         throw new Error(
           `[mutashabihat] group ${group.id}, surah ${m.surah}:${m.ayah}: ` +
-            `farq "${m.farq}" is not a substring of text`,
+            `similarity "${m.similarity}" is not a substring of text`,
         );
       }
     }

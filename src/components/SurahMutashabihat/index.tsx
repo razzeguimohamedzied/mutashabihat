@@ -10,20 +10,20 @@ import {
 import styles from "./styles.module.css";
 
 /**
- * Splits `text` around every occurrence of `farq` and wraps each match in a
+ * Splits `text` around every occurrence of `similarity` and wraps each match in a
  * highlighted <mark>. The text is NEVER mutated — the span is marked at render
- * time. If `farq` is empty or not found, the text renders unchanged.
+ * time. If `similarity` is empty or not found, the text renders unchanged.
  */
-function highlightFarq(text: string, farq: string): ReactNode {
-  if (!farq || !text.includes(farq)) {
+function highlightSimilarity(text: string, similarity: string): ReactNode {
+  if (!similarity || !text.includes(similarity)) {
     return text;
   }
-  const parts = text.split(farq);
+  const parts = text.split(similarity);
   return parts.map((part, i) => (
     // eslint-disable-next-line react/no-array-index-key
     <span key={i}>
       {part}
-      {i < parts.length - 1 && <mark className={styles.farq}>{farq}</mark>}
+      {i < parts.length - 1 && <mark className={styles.similarity}>{similarity}</mark>}
     </span>
   ));
 }
@@ -55,7 +55,7 @@ function MemberCard({
         {isCurrent && <span className={styles.currentBadge}>هذه السورة</span>}
       </div>
       <p className={styles.ayahText} lang="ar">
-        {highlightFarq(member.text, member.farq)}
+        {highlightSimilarity(member.text, member.similarity)}
       </p>
     </li>
   );
@@ -68,8 +68,8 @@ export interface SurahMutashabihatProps {
 
 /**
  * Renders every similarity group that touches `surah`. Each group is shown in
- * full (all members, including those from other surahs), the differing word
- * (`farq`) is highlighted inside every member, and the member(s) belonging to
+ * full (all members, including those from other surahs), the shared word
+ * (`similarity`) is highlighted inside every member, and the member(s) belonging to
  * the current surah are emphasized.
  */
 export default function SurahMutashabihat({
