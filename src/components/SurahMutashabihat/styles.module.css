@@ -120,7 +120,7 @@
 
 /* The shared span. Marked at render time, never baked into the text. */
 .similarity {
-  background: rgba(255, 214, 0, 0.55);
+  background: #fa383eb5;
   color: inherit;
   padding: 0.05em 0.15em;
   border-radius: 3px;
@@ -128,5 +128,5 @@
 }
 
 [data-theme="dark"] .similarity {
-  background: rgba(255, 214, 0, 0.32);
+  background: #fa383eb5;
 }
