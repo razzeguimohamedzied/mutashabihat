@@ -39,7 +39,42 @@ const config: Config = {
 
   // Generates one static page per surah at /mutashabihat/{slug} from the
   // normalized data in src/data/mutashabihat (single source of truth).
-  plugins: ["./src/plugins/mutashabihat-pages.ts"],
+  plugins: [
+    "./src/plugins/mutashabihat-pages.ts",
+    // Makes the offline search <SearchBar> work despite `docs: false` (see the
+    // plugin for details). Must be present for the production build to succeed.
+    "./src/plugins/docs-client-shim-plugin.ts",
+  ],
+
+  themes: [
+    // Fully offline local search over the built (SSG) HTML. Docs and blog are
+    // disabled, and every surah page is an `addRoute`'d route (neither docs nor
+    // blog nor a src/pages page), so we index "pages" and disable docs/blog.
+    // Only active for the production build served by `npm run serve` — the
+    // plugin reads the emitted HTML, so search does not run under `npm start`.
+    [
+      "@easyops-cn/docusaurus-search-local",
+      {
+        // Stable content-hashed index filenames for cache busting.
+        hashed: true,
+        // Arabic content (with English fallback for any Latin text/UI).
+        language: ["ar", "en"],
+        // Docs/blog are disabled in this site; the generated /mutashabihat/*
+        // routes and the summary page are "pages" as far as the indexer sees.
+        indexDocs: false,
+        indexBlog: false,
+        indexPages: true,
+        // Keep Arabic keywords (short words, particles) in the index — the
+        // default English stop-word filter must not strip Arabic terms.
+        removeDefaultStopWordFilter: true,
+        // Highlight matched terms on the destination page after navigating from
+        // a result; works with the site-wide RTL direction.
+        highlightSearchTermsOnTargetPage: true,
+        searchResultLimits: 12,
+        searchResultContextMaxLength: 80,
+      },
+    ],
+  ],
 
   presets: [
     [
