@@ -6,7 +6,7 @@
   max-width: 900px;
   margin: 0 auto;
   padding: 1rem 0 3rem;
-  text-align: right;
+  text-align: start;
 }
 
 .pageHeader {
@@ -146,6 +146,10 @@
   line-height: 2.6;
   margin: 0;
   color: var(--ifm-font-color-base);
+  /* Logical value: rtlcss does NOT flip `start` (unlike `right`, which it
+     mirrors to `left` for the ar/RTL build), so the ayah always aligns to the
+     reading start — the right edge in this RTL site. */
+  text-align: start;
 }
 
 /* The shared span. Marked at render time, never baked into the text. */
