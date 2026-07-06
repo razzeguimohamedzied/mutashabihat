@@ -40,6 +40,36 @@
   color: var(--ifm-color-primary);
 }
 
+/* الضابط — the memorization aid for telling the look-alikes apart. */
+.dabit {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin: 1.25rem 0 0 0;
+  padding: 0.75rem 1rem;
+  background: var(--ifm-color-warning-contrast-background, rgba(255, 196, 0, 0.1));
+  border-inline-start: 4px solid var(--ifm-color-warning, #e6a700);
+  border-radius: 8px;
+}
+
+.dabitLabel {
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: var(--ifm-color-warning, #e6a700);
+  color: #fff;
+  padding: 0.1rem 0.6rem;
+  border-radius: 999px;
+}
+
+.dabitText {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: var(--ifm-font-color-base);
+}
+
 .members {
   list-style: none;
   margin: 0;

@@ -105,6 +105,12 @@ export default function SurahMutashabihat({
               />
             ))}
           </ol>
+          {group.memorizationRule && (
+            <aside className={styles.dabit} lang="ar">
+              <span className={styles.dabitLabel}>الضابط</span>
+              <p className={styles.dabitText}>{group.memorizationRule}</p>
+            </aside>
+          )}
         </article>
       ))}
     </section>

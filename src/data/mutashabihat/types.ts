@@ -36,6 +36,12 @@ export interface MutashabihGroup {
   id: string;
   /** Short Arabic label describing the shared wording (for headings). */
   title: string;
+  /**
+   * Optional الضابط — a memorization aid (Arabic) explaining how to tell the
+   * look-alike ayahs apart (the rule/hook the memorizer keys the difference on).
+   * When absent, no ضابط is shown for the group.
+   */
+  memorizationRule?: string;
   /** The look-alike ayahs. Always length >= 2. */
   members: MutashabihMember[];
 }
