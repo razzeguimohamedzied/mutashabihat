@@ -106,6 +106,11 @@ const config: Config = {
           position: "left",
         },
         {
+          to: "/mutashabihat/problem-ayat",
+          label: "آيات أواجه صعوبة في حفظها",
+          position: "left",
+        },
+        {
           href: "https://github.com/razzeguimohamedzied/mutashabihat",
           label: "GitHub",
           position: "right",
