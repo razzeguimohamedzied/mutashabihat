@@ -11,32 +11,48 @@ import {
 import styles from "./index.module.css";
 
 /**
- * Splits `text` around every occurrence of `highlight` and wraps the selected
- * matches in a <mark>: all of them, or only the 1-based `occurrences` when
- * given (unselected matches render as plain text). The text is NEVER mutated.
- * If `highlight` is empty or not found, the text renders unchanged.
+ * Wraps every occurrence of each `highlight` phrase in `text` in a <mark>. With
+ * a single phrase, `occurrences` (1-based) restricts marking to those matches;
+ * unselected matches render as plain text. The text is NEVER mutated. If no
+ * phrase is found, the text renders unchanged.
  */
 function highlightWrong(
   text: string,
-  highlight?: string,
+  highlight?: string | readonly string[],
   occurrences?: readonly number[],
 ): ReactNode {
-  if (!highlight || !text.includes(highlight)) {
+  const phrases = (typeof highlight === "string" ? [highlight] : highlight ?? [])
+    .filter((p) => p.length > 0);
+  const ranges: { start: number; end: number }[] = [];
+  for (const phrase of phrases) {
+    let n = 0;
+    for (let at = text.indexOf(phrase); at !== -1; at = text.indexOf(phrase, at + phrase.length)) {
+      n += 1;
+      if (!occurrences || occurrences.includes(n)) {
+        ranges.push({ start: at, end: at + phrase.length });
+      }
+    }
+  }
+  if (ranges.length === 0) {
     return text;
   }
-  const parts = text.split(highlight);
-  return parts.map((part, i) => (
-    // eslint-disable-next-line react/no-array-index-key
-    <span key={i}>
-      {part}
-      {i < parts.length - 1 &&
-        (!occurrences || occurrences.includes(i + 1) ? (
-          <mark className={styles.highlight}>{highlight}</mark>
-        ) : (
-          highlight
-        ))}
-    </span>
-  ));
+  ranges.sort((a, b) => a.start - b.start);
+  const nodes: ReactNode[] = [];
+  let cursor = 0;
+  for (const { start, end } of ranges) {
+    if (start < cursor) {
+      continue; // overlaps an earlier match
+    }
+    nodes.push(text.slice(cursor, start));
+    nodes.push(
+      <mark key={start} className={styles.highlight}>
+        {text.slice(start, end)}
+      </mark>,
+    );
+    cursor = end;
+  }
+  nodes.push(text.slice(cursor));
+  return nodes;
 }
 
 function ProblemCard({ entry }: { entry: ProblemAyah }): ReactNode {

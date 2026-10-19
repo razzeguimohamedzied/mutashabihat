@@ -34,17 +34,23 @@ function assertProblemAyat(all: readonly ProblemAyah[]): void {
         `[problemAyat] ${entry.id}: invalid surah ${entry.surah}`,
       );
     }
-    if (
-      entry.highlight &&
-      entry.highlight.length > 0 &&
-      !entry.text.includes(entry.highlight)
-    ) {
-      throw new Error(
-        `[problemAyat] ${entry.id} (${entry.surah}:${entry.ayah}): ` +
-          `highlight "${entry.highlight}" is not a substring of text`,
-      );
+    const phrases =
+      typeof entry.highlight === "string" ? [entry.highlight] : entry.highlight ?? [];
+    for (const phrase of phrases) {
+      if (phrase.length > 0 && !entry.text.includes(phrase)) {
+        throw new Error(
+          `[problemAyat] ${entry.id} (${entry.surah}:${entry.ayah}): ` +
+            `highlight "${phrase}" is not a substring of text`,
+        );
+      }
     }
     if (entry.highlightOccurrences) {
+      if (typeof entry.highlight !== "string") {
+        throw new Error(
+          `[problemAyat] ${entry.id} (${entry.surah}:${entry.ayah}): ` +
+            `highlightOccurrences requires a single-phrase highlight`,
+        );
+      }
       const count = entry.highlight
         ? entry.text.split(entry.highlight).length - 1
         : 0;

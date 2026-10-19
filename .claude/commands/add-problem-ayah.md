@@ -18,7 +18,9 @@ One entry. Fields:
 - **ayah** number — required
 - the EXACT ayah `text` — required
 - **highlight** — optional: the part of the ayah habitually recalled wrong. Must
-  be an exact substring of `text`. Include only if the user supplies it.
+  be an exact substring of `text`. Include only if the user supplies it. If the
+  user gives several separate phrases (e.g. "X and Y"), store an array
+  `["X", "Y"]`, each an exact substring of `text`.
 - **highlightOccurrences** — optional: 1-based list of which occurrences of
   `highlight` to mark (e.g. `[1]`, `[2]`, `[1, 3]`); omit to mark all. If the
   highlight occurs more than once in `text` and the user didn't say which,
@@ -56,8 +58,8 @@ surah/ayah numbers. `highlight` and `note` must come verbatim from the user.
    - id is unique (no existing entry has it)
    - if `highlight` is present, it is an EXACT substring of `text` (this is the
      key invariant `assertProblemAyat` enforces; a mismatch fails the build)
-   - if `highlightOccurrences` is present, each value is in 1..(number of times
-     `highlight` occurs in `text`)
+   - if `highlightOccurrences` is present, `highlight` is a single string and
+     each value is in 1..(number of times `highlight` occurs in `text`)
    - all required fields present
 5. Append the new entry to the `problemAyat` array in `entries.ts`, matching the
    existing object shape and key order (`id`, `surah`, `ayah`, `text`,

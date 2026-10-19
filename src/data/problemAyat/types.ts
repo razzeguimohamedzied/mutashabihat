@@ -21,14 +21,15 @@ export interface ProblemAyah {
   text: string;
   /**
    * Optional part of the ayah that is habitually recalled wrong. Must be an
-   * exact substring of `text`. Highlighted at render time; when absent, the
-   * text renders unmarked.
+   * exact substring of `text`. Use an array to mark several separate phrases.
+   * Highlighted at render time; when absent, the text renders unmarked.
    */
-  highlight?: string;
+  highlight?: string | string[];
   /**
    * Optional 1-based occurrences of `highlight` to mark, for when it appears
    * more than once in `text` (e.g. `[1]` = only the first, `[2]` = only the
-   * second). When absent, every occurrence is highlighted.
+   * second). When absent, every occurrence is highlighted. Only allowed when
+   * `highlight` is a single phrase.
    */
   highlightOccurrences?: number[];
   /**
