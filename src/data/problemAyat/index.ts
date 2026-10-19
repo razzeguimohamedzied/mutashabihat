@@ -44,6 +44,19 @@ function assertProblemAyat(all: readonly ProblemAyah[]): void {
           `highlight "${entry.highlight}" is not a substring of text`,
       );
     }
+    if (entry.highlightOccurrences) {
+      const count = entry.highlight
+        ? entry.text.split(entry.highlight).length - 1
+        : 0;
+      for (const n of entry.highlightOccurrences) {
+        if (!Number.isInteger(n) || n < 1 || n > count) {
+          throw new Error(
+            `[problemAyat] ${entry.id} (${entry.surah}:${entry.ayah}): ` +
+              `highlightOccurrences ${n} is out of range (highlight occurs ${count} time(s))`,
+          );
+        }
+      }
+    }
   }
 }
 

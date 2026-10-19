@@ -19,6 +19,10 @@ One entry. Fields:
 - the EXACT ayah `text` — required
 - **highlight** — optional: the part of the ayah habitually recalled wrong. Must
   be an exact substring of `text`. Include only if the user supplies it.
+- **highlightOccurrences** — optional: 1-based list of which occurrences of
+  `highlight` to mark (e.g. `[1]`, `[2]`, `[1, 3]`); omit to mark all. If the
+  highlight occurs more than once in `text` and the user didn't say which,
+  ask — the right occurrence varies per ayah.
 - **note** — optional: a free-text Arabic reminder of what goes wrong. Include
   only if the user supplies it; never invent one.
 
@@ -52,10 +56,12 @@ surah/ayah numbers. `highlight` and `note` must come verbatim from the user.
    - id is unique (no existing entry has it)
    - if `highlight` is present, it is an EXACT substring of `text` (this is the
      key invariant `assertProblemAyat` enforces; a mismatch fails the build)
+   - if `highlightOccurrences` is present, each value is in 1..(number of times
+     `highlight` occurs in `text`)
    - all required fields present
 5. Append the new entry to the `problemAyat` array in `entries.ts`, matching the
    existing object shape and key order (`id`, `surah`, `ayah`, `text`,
-   `highlight?`, `note?`), 2-space indentation, trailing newline. Omit optional
+   `highlight?`, `highlightOccurrences?`, `note?`), 2-space indentation, trailing newline. Omit optional
    fields the user didn't provide rather than writing empty strings. Keep the git
    diff minimal — do not reformat or touch unrelated entries.
 

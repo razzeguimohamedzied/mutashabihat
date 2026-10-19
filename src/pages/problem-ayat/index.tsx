@@ -11,11 +11,16 @@ import {
 import styles from "./index.module.css";
 
 /**
- * Splits `text` around every occurrence of `highlight` and wraps each match in a
- * <mark>. The text is NEVER mutated. If `highlight` is empty or not found, the
- * text renders unchanged.
+ * Splits `text` around every occurrence of `highlight` and wraps the selected
+ * matches in a <mark>: all of them, or only the 1-based `occurrences` when
+ * given (unselected matches render as plain text). The text is NEVER mutated.
+ * If `highlight` is empty or not found, the text renders unchanged.
  */
-function highlightWrong(text: string, highlight?: string): ReactNode {
+function highlightWrong(
+  text: string,
+  highlight?: string,
+  occurrences?: readonly number[],
+): ReactNode {
   if (!highlight || !text.includes(highlight)) {
     return text;
   }
@@ -24,9 +29,12 @@ function highlightWrong(text: string, highlight?: string): ReactNode {
     // eslint-disable-next-line react/no-array-index-key
     <span key={i}>
       {part}
-      {i < parts.length - 1 && (
-        <mark className={styles.highlight}>{highlight}</mark>
-      )}
+      {i < parts.length - 1 &&
+        (!occurrences || occurrences.includes(i + 1) ? (
+          <mark className={styles.highlight}>{highlight}</mark>
+        ) : (
+          highlight
+        ))}
     </span>
   ));
 }
@@ -46,7 +54,7 @@ function ProblemCard({ entry }: { entry: ProblemAyah }): ReactNode {
         <span className={styles.ayahNo}>الآية {entry.ayah}</span>
       </div>
       <p className={styles.ayahText} lang="ar">
-        {highlightWrong(entry.text, entry.highlight)}
+        {highlightWrong(entry.text, entry.highlight, entry.highlightOccurrences)}
       </p>
       {entry.note && (
         <aside className={styles.note} lang="ar">

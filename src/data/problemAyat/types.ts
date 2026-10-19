@@ -26,6 +26,12 @@ export interface ProblemAyah {
    */
   highlight?: string;
   /**
+   * Optional 1-based occurrences of `highlight` to mark, for when it appears
+   * more than once in `text` (e.g. `[1]` = only the first, `[2]` = only the
+   * second). When absent, every occurrence is highlighted.
+   */
+  highlightOccurrences?: number[];
+  /**
    * Optional free-text Arabic note: what you get wrong, or a reminder that
    * helps you fix it.
    */
