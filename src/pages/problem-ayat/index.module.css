@@ -1,11 +1,9 @@
-/* Personal "problem ayat" watchlist. Shares the RTL + Arabic typography of the
-   mutashabihat feature. The confusing span is marked at render time, never
-   baked into the text. */
+/* Index of the personal "problem ayat" watchlist, laid out like the
+   mutashabihat index but accented with the watchlist's danger color. */
 
 .header {
-  max-width: 900px;
-  margin: 0 auto 2rem;
   text-align: center;
+  margin-bottom: 2rem;
 }
 
 .title {
@@ -19,109 +17,81 @@
   margin: 0 auto;
 }
 
-.list {
+.grid {
   list-style: none;
-  max-width: 900px;
-  margin: 0 auto;
+  margin: 0;
   padding: 0;
   display: grid;
-  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.75rem;
 }
 
-.card {
-  padding: 1.25rem 1.5rem;
+.cell {
   border: 1px solid var(--ifm-color-emphasis-200);
-  border-inline-start: 5px solid var(--ifm-color-danger, #fa383e);
-  border-radius: 12px;
-  background: var(--ifm-card-background-color, var(--ifm-background-surface-color));
+  border-radius: 10px;
+  background: var(--ifm-background-surface-color);
+  transition: transform 0.12s ease, box-shadow 0.12s ease,
+    border-color 0.12s ease;
+}
+
+.cell:hover {
+  transform: translateY(-2px);
   box-shadow: var(--ifm-global-shadow-lw);
 }
 
-.ref {
+/* Surahs that have at least one watchlist entry. */
+.cellActive {
+  border-color: var(--ifm-color-danger, #fa383e);
+  background: var(--ifm-color-danger-contrast-background,
+    rgba(250, 56, 62, 0.08));
+}
+
+.cellLink {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.6rem;
-  font-size: 0.9rem;
-}
-
-.surahName {
-  font-weight: 700;
-  color: var(--ifm-color-emphasis-800);
-}
-
-.surahLink {
-  font-weight: 700;
-  color: var(--ifm-color-primary);
+  gap: 0.6rem;
+  padding: 0.7rem 0.9rem;
+  color: var(--ifm-font-color-base);
   text-decoration: none;
 }
 
-.surahLink:hover {
-  color: var(--ifm-color-primary-dark);
-  text-decoration: underline;
+.cellLink:hover {
+  text-decoration: none;
 }
 
-.ayahNo {
-  color: var(--ifm-color-emphasis-600);
-}
-
-/* Qur'an-friendly Arabic typography, matching the mutashabihat cards. */
-.ayahText {
-  font-family: "Amiri Quran", "Amiri", "Scheherazade New", "Traditional Arabic",
-    "Noto Naskh Arabic", serif;
-  font-size: 1.6rem;
-  line-height: 2.6;
-  margin: 0;
-  color: var(--ifm-font-color-base);
-  /* Logical `start` is not flipped by rtlcss, so the ayah aligns to the reading
-     start (right edge) in this RTL site. */
-  text-align: start;
-}
-
-/* The habitually-wrong span. Marked at render time. */
-.highlight {
-  background: #fa383eb5;
-  color: inherit;
-  padding: 0.05em 0.15em;
-  border-radius: 3px;
-  font-weight: 700;
-}
-
-/* The personal note about what goes wrong. */
-.note {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.6rem;
-  margin: 1.25rem 0 0 0;
-  padding: 0.75rem 1rem;
-  background: var(--ifm-color-info-contrast-background, rgba(84, 199, 236, 0.1));
-  border-inline-start: 4px solid var(--ifm-color-info, #54c7ec);
-  border-radius: 8px;
-}
-
-.noteLabel {
-  flex-shrink: 0;
+.num {
+  min-width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-size: 0.8rem;
   font-weight: 700;
-  background: var(--ifm-color-info, #54c7ec);
+  color: var(--ifm-color-emphasis-700);
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 50%;
+}
+
+.cellActive .num {
   color: #fff;
-  padding: 0.1rem 0.6rem;
-  border-radius: 999px;
+  background: var(--ifm-color-danger, #fa383e);
 }
 
-.noteText {
-  margin: 0;
-  font-size: 1.05rem;
-  line-height: 1.9;
-  color: var(--ifm-font-color-base);
+.name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  flex: 1;
 }
 
-.empty {
-  max-width: 900px;
-  margin: 3rem auto;
+/* Number of entries in this surah. */
+.count {
+  min-width: 1.5rem;
+  padding: 0 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.5rem;
   text-align: center;
-  font-size: 1.25rem;
-  color: var(--ifm-color-emphasis-600);
+  color: var(--ifm-color-danger-dark, #f81b22);
+  border: 1px solid currentColor;
+  border-radius: 999px;
 }

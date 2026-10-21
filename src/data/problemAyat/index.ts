@@ -73,6 +73,17 @@ export function surahNameFor(entry: ProblemAyah): string {
   return surahByNumber.get(entry.surah)?.name ?? `سورة ${entry.surah}`;
 }
 
+/** Every watchlist entry in `surah`, in ayah order. */
+export function getProblemAyatForSurah(surah: number): ProblemAyah[] {
+  return problemAyat.filter((entry) => entry.surah === surah);
+}
+
+/** Number of watchlist entries per surah (only surahs with ≥1 entry). */
+export const problemCountBySurah: ReadonlyMap<number, number> = problemAyat.reduce(
+  (counts, entry) => counts.set(entry.surah, (counts.get(entry.surah) ?? 0) + 1),
+  new Map<number, number>(),
+);
+
 /** URL slug of the surah an entry belongs to (for linking to its page). */
 export function surahSlugFor(entry: ProblemAyah): string | undefined {
   return surahByNumber.get(entry.surah)?.slug;

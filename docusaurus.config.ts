@@ -41,6 +41,8 @@ const config: Config = {
   // normalized data in src/data/mutashabihat (single source of truth).
   plugins: [
     "./src/plugins/mutashabihat-pages.ts",
+    // Same, for the personal watchlist at /mutashabihat/problem-ayat/{slug}.
+    "./src/plugins/problem-ayat-pages.ts",
     // Makes the offline search <SearchBar> work despite `docs: false` (see the
     // plugin for details). Must be present for the production build to succeed.
     "./src/plugins/docs-client-shim-plugin.ts",
