@@ -22,9 +22,10 @@ export interface MutashabihMember {
   text: string;
   /**
    * The shared word/phrase in THIS member — the part it has in common with the
-   * look-alike members. Must be an exact substring of `text`.
+   * look-alike members. Must be an exact substring of `text`. Use an array to
+   * mark several separate phrases.
    */
-  similarity: string;
+  similarity: string | string[];
 }
 
 /**

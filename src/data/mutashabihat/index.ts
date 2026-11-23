@@ -41,11 +41,15 @@ function assertGroups(all: MutashabihGroup[]): void {
           `[mutashabihat] group ${group.id}: unknown surah ${m.surah}`,
         );
       }
-      if (m.similarity.length > 0 && !m.text.includes(m.similarity)) {
-        throw new Error(
-          `[mutashabihat] group ${group.id}, surah ${m.surah}:${m.ayah}: ` +
-            `similarity "${m.similarity}" is not a substring of text`,
-        );
+      const phrases =
+        typeof m.similarity === "string" ? [m.similarity] : m.similarity;
+      for (const phrase of phrases) {
+        if (phrase.length > 0 && !m.text.includes(phrase)) {
+          throw new Error(
+            `[mutashabihat] group ${group.id}, surah ${m.surah}:${m.ayah}: ` +
+              `similarity "${phrase}" is not a substring of text`,
+          );
+        }
       }
     }
   }

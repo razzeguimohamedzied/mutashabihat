@@ -10,22 +10,42 @@ import {
 import styles from "./styles.module.css";
 
 /**
- * Splits `text` around every occurrence of `similarity` and wraps each match in a
- * highlighted <mark>. The text is NEVER mutated — the span is marked at render
- * time. If `similarity` is empty or not found, the text renders unchanged.
+ * Wraps every occurrence of each `similarity` phrase in `text` in a highlighted
+ * <mark>. The text is NEVER mutated — the spans are marked at render time. If no
+ * phrase is found, the text renders unchanged.
  */
-function highlightSimilarity(text: string, similarity: string): ReactNode {
-  if (!similarity || !text.includes(similarity)) {
+function highlightSimilarity(
+  text: string,
+  similarity: string | readonly string[],
+): ReactNode {
+  const phrases = (typeof similarity === "string" ? [similarity] : similarity)
+    .filter((p) => p.length > 0);
+  const ranges: { start: number; end: number }[] = [];
+  for (const phrase of phrases) {
+    for (let at = text.indexOf(phrase); at !== -1; at = text.indexOf(phrase, at + phrase.length)) {
+      ranges.push({ start: at, end: at + phrase.length });
+    }
+  }
+  if (ranges.length === 0) {
     return text;
   }
-  const parts = text.split(similarity);
-  return parts.map((part, i) => (
-    // eslint-disable-next-line react/no-array-index-key
-    <span key={i}>
-      {part}
-      {i < parts.length - 1 && <mark className={styles.similarity}>{similarity}</mark>}
-    </span>
-  ));
+  ranges.sort((a, b) => a.start - b.start);
+  const nodes: ReactNode[] = [];
+  let cursor = 0;
+  for (const { start, end } of ranges) {
+    if (start < cursor) {
+      continue; // overlaps an earlier match
+    }
+    nodes.push(text.slice(cursor, start));
+    nodes.push(
+      <mark key={start} className={styles.similarity}>
+        {text.slice(start, end)}
+      </mark>,
+    );
+    cursor = end;
+  }
+  nodes.push(text.slice(cursor));
+  return nodes;
 }
 
 function MemberCard({
