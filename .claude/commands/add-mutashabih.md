@@ -15,6 +15,26 @@ A group has 2+ members. Per member: surah number, ayah number, the EXACT ayah
 text, and the shared word/phrase (similarity). Optionally, the group may include
 `memorizationRule` (الضابط) — an Arabic memorization aid explaining how to tell the
 look-alikes apart. Include it only if the user supplies it; never invent one.
+Its type is `Explanation` (`src/data/explanation.ts`): a plain string (rendered
+as text) for a single idea, or `` { html: `…` } `` (injected as HTML) for anything
+richer. When the rule compares several places, use HTML with one `<li>` per
+place, written as a multi-line template literal matching the existing groups:
+
+```ts
+memorizationRule: {
+  html: `
+    <p>… :</p>
+    <ul>
+      <li>73 — … ← «…»</li>
+      <li>76 — … ← «…»</li>
+    </ul>
+  `,
+},
+```
+
+Quote Qur'anic words with «…» (emphasised at render time; a quote must not
+straddle a tag). Build-time validation rejects unbalanced tags and
+script/style/iframe/event-handler markup.
 
 Example the user might paste:
 

@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
+import Explanation from "@site/src/components/Explanation";
 import {
   getGroupsForSurah,
   getSurahInfo,
@@ -128,7 +129,7 @@ export default function SurahMutashabihat({
           {group.memorizationRule && (
             <aside className={styles.dabit} lang="ar">
               <span className={styles.dabitLabel}>الضابط</span>
-              <p className={styles.dabitText}>{group.memorizationRule}</p>
+              <Explanation value={group.memorizationRule} />
             </aside>
           )}
         </article>

@@ -1,0 +1,43 @@
+/* Body of a الضابط / note box. The surrounding box and label are owned by the
+   parent component (they differ in colour); this only lays out the text, which
+   may be plain text or injected HTML. */
+
+.text {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: var(--ifm-font-color-base);
+}
+
+.text p {
+  margin: 0;
+}
+
+.text > * + * {
+  margin-top: 0.35rem;
+}
+
+.text ul,
+.text ol {
+  margin-bottom: 0;
+  padding-inline-start: 1.25rem;
+}
+
+.text li + li {
+  margin-top: 0.35rem;
+}
+
+.text li > ul,
+.text li > ol {
+  margin-top: 0.25rem;
+}
+
+/* A «…» quotation of Qur'anic wording inside the explanation. */
+.quote {
+  font-weight: 600;
+  color: var(--ifm-color-primary-darker);
+}
+
+[data-theme="dark"] .quote {
+  color: var(--ifm-color-primary-lighter);
+}

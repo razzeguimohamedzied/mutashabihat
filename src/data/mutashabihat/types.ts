@@ -7,6 +7,8 @@
  * so a group is never duplicated across surah files.
  */
 
+import type { Explanation } from "../explanation";
+
 /** A single ayah that belongs to a similarity group. */
 export interface MutashabihMember {
   /** Surah number, 1..114. */
@@ -40,9 +42,10 @@ export interface MutashabihGroup {
   /**
    * Optional الضابط — a memorization aid (Arabic) explaining how to tell the
    * look-alike ayahs apart (the rule/hook the memorizer keys the difference on).
-   * When absent, no ضابط is shown for the group.
+   * When absent, no ضابط is shown for the group. Plain text, or `{ html }` for
+   * rich markup (e.g. a list with one item per place).
    */
-  memorizationRule?: string;
+  memorizationRule?: Explanation;
   /** The look-alike ayahs. Always length >= 2. */
   members: MutashabihMember[];
 }

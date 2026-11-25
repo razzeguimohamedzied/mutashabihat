@@ -4,6 +4,7 @@
  * The list is validated once at module load so a bad edit fails the build instead of rendering broken. 
  * Surah names are derived from the shared surah table — never duplicated here.
  */
+import { assertExplanation } from "../explanation";
 import { surahByNumber } from "../mutashabihat/surahs";
 import { problemAyat as problemAyatRaw } from "./entries";
 import type { ProblemAyah } from "./types";
@@ -33,6 +34,9 @@ function assertProblemAyat(all: readonly ProblemAyah[]): void {
       throw new Error(
         `[problemAyat] ${entry.id}: invalid surah ${entry.surah}`,
       );
+    }
+    if (entry.note !== undefined) {
+      assertExplanation(`[problemAyat] ${entry.id}`, entry.note);
     }
     const phrases =
       typeof entry.highlight === "string" ? [entry.highlight] : entry.highlight ?? [];

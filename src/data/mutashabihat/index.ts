@@ -5,6 +5,7 @@
  * is normalized once and denormalized on read. Nothing downstream duplicates a
  * group's content.
  */
+import { assertExplanation } from "../explanation";
 import { groups } from "./groups";
 import { surahs, surahByNumber } from "./surahs";
 import type { MutashabihGroup, SurahInfo } from "./types";
@@ -29,6 +30,9 @@ function assertGroups(all: MutashabihGroup[]): void {
       throw new Error(
         `[mutashabihat] group ${group.id} must have >= 2 members`,
       );
+    }
+    if (group.memorizationRule !== undefined) {
+      assertExplanation(`[mutashabihat] group ${group.id}`, group.memorizationRule);
     }
     for (const m of group.members) {
       if (m.surah < 1 || m.surah > 114) {

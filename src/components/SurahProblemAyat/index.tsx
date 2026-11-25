@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "@docusaurus/Link";
+import Explanation from "@site/src/components/Explanation";
 import { getSurahInfo } from "@site/src/data/mutashabihat";
 import {
   getProblemAyatForSurah,
@@ -65,7 +66,7 @@ function ProblemCard({ entry }: { entry: ProblemAyah }): ReactNode {
       {entry.note && (
         <aside className={styles.note} lang="ar">
           <span className={styles.noteLabel}>ملاحظة</span>
-          <p className={styles.noteText}>{entry.note}</p>
+          <Explanation value={entry.note} />
         </aside>
       )}
     </li>

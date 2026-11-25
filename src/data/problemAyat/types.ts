@@ -6,6 +6,8 @@
  * groups. Add a verse while you get it wrong; delete it once it's fixed.
  */
 
+import type { Explanation } from "../explanation";
+
 /** A single verse the memorizer wants to keep reviewing. */
 export interface ProblemAyah {
   /** Stable identifier, e.g. "prob-0001". */
@@ -34,7 +36,8 @@ export interface ProblemAyah {
   highlightOccurrences?: number[];
   /**
    * Optional free-text Arabic note: what you get wrong, or a reminder that
-   * helps you fix it.
+   * helps you fix it. Plain text, or `{ html }` for rich markup (e.g. a list
+   * with one item per reading, حفص vs قالون).
    */
-  note?: string;
+  note?: Explanation;
 }

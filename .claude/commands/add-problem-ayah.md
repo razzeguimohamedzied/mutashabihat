@@ -26,7 +26,22 @@ One entry. Fields:
   highlight occurs more than once in `text` and the user didn't say which,
   ask — the right occurrence varies per ayah.
 - **note** — optional: a free-text Arabic reminder of what goes wrong. Include
-  only if the user supplies it; never invent one.
+  only if the user supplies it; never invent one. Its type is `Explanation`
+  (`src/data/explanation.ts`): a plain string (rendered as text), or
+  `` { html: `…` } `` (injected as HTML) for anything richer. For a reading
+  difference use a list, as a multi-line template literal matching the
+  existing entries:
+  ```ts
+  note: {
+    html: `
+      <p>اختلاف بين حفص وقالون:</p>
+      <ul>
+        <li>حفص: …</li>
+        <li>قالون: …</li>
+      </ul>
+    `,
+  },
+  ```
 
 Example the user might paste:
 
